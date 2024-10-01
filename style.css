@@ -1,27 +1,210 @@
-@import url("https://fontmeme.com/fonts/franklin-gothic-medium-font/#google_vignette"); /* Importa la fuente 'Open Sans' */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Quicksand:wght@300..700&display=swap");
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+}
+
+body {
+  background-color: #0d0a0b;
+  background: linear-gradient(145deg, #55566a 0%, #131318 76%);
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 125vh;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Content */
+
+.content {
+  padding-left: 120px;
+  color: #c7c7c7c9;
+  user-select: none;
+}
+
+.content h1 {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(2.5rem, 4vw, 6rem);
+  font-weight: 700;
+  background: -webkit-linear-gradient(0deg, #f76591, #ffc16f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+  margin-bottom: 36px;
+  padding-left: 10px;
+}
+
+.content p {
+  font-size: clamp(0.9rem, 4vw, 1.2rem);
+  line-height: 1.6;
+  padding-right: 100px;
+}
+
+.btn {
+  background-color: #f76591;
+  background-image: linear-gradient(-180deg, #ffc16f, #f76591);
+  font-size: clamp(0.8rem, 8vw, 0.9rem);
+  font-weight: 600;
+  color: #fff;
+  width: max-content;
+  outline: 0;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  margin-top: 26px;
+  text-align: center;
+  transform: scale(1);
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: auto;
+}
+
+.btn:hover {
+  box-shadow: 0 4px 10px rgba(247, 101, 145, 0.5);
+  transform: scale(0.98);
+}
+
+/* Stacked Cards */
+
+.stack {
+  position: relative;
+}
+
+.card {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 700px;
+  height: 500px;
+  border-radius: 4rem;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25),
+    0 15px 20px 0 rgba(0, 0, 0, 0.125);
+  transition: transform 0.6s;
+  user-select: none;
+}
+
+
+/* Media queries for keyframes */
+
+@media (max-width: 1200px) {
+  @keyframes swap {
+    30% {
+      transform: translate(calc(var(--x) - 200px), -50%) scale(0.85)
+        rotate(-5deg) rotateY(65deg);
+    }
+
+    100% {
+      transform: translate(calc(var(--x) - 30px), -50%) scale(0.5);
+      z-index: -1;
+    }
+  }
+}
+
+@media (max-width: 1050px) {
+  @keyframes swap {
+    30% {
+      transform: translate(calc(var(--x) - 150px), -50%) scale(0.85)
+        rotate(-5deg) rotateY(65deg);
+    }
+
+    100% {
+      transform: translate(calc(var(--x) - 30px), -50%) scale(0.5);
+      z-index: -1;
+    }
+  }
+}
+
+/* Media queries for other classes */
+
+.card {
+  --background: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
+  width: 500px; /* Tamaño de la tarjeta */
+  height: 500px; /* Tamaño de la tarjeta */
+  padding: 10px;
+  border-radius: 4rem;
+  overflow: hidden; /* Evitar que el contenido se desborde */
+  background: #f7ba2b;
+  background: var(--background);
+  position: relative;
+  z-index: 1;
+}
+
+.card::after {
+  position: absolute;
+  content: "";
+  top: 30px;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  transform: scale(0.8);
+  filter: blur(25px);
+  background: #f7ba2b;
+  background: var(--background);
+  transition: opacity .5s;
+}
+
+.card-info {
+  --color: #fad7a0;
+  background: var(--color);
+  color: var(--color);
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Evitar que el contenido se desborde */
+  border-radius: .7rem;
+  text-align: center; /* Asegurarse que el texto esté centrado */
+  font-size: 15px;
+}
+
+.card .title {
+  font-weight: bold;
+  letter-spacing: .1em;
+  font-size: 12px; /* Tamaño de letra */
+}
+
+/*Hover*/
+.card:hover::after {
+  opacity: 0;
+}
+
+.card:hover .card-info {
+  color: #f7ba2b;
+  transition: color 1s;
+}
+
+
 
 *, html { /* Aplica a todos los elementos y al elemento html */
   box-sizing: border-box; /* Incluye padding y border en el tamaño total */
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif /* Define 'Open Sans' como la fuente base */
+  font-family: 'Garamond';/* Define 'Open Sans' como la fuente base */
 }
 
-html, body { /* Estilos para el html y el body */
+html, body { /* Estilos para el html y el body *
     margin: 0; /* Elimina el margen por defecto */
     padding: 0; /* Elimina el padding por defecto */
-    background-color: #900C3F ; /* Fondo claro */
+    background-color: #FF6961 ; /* Fondo claro */
 }
 
-main { /* Estilo para el elemento main */
-    display: grid; /* Activa el grid layout */
-    grid-template-columns: 1fr 2fr; /* Define dos columnas con proporciones 1:2 */
-    grid-template-rows: auto auto; /* Define dos filas de altura automática */
-    margin-left: 50px; /* Márgen izquierdo de 50px */
-    margin-right: 50px; /* Márgen derecho de 50px */
-    column-gap: 20px; /* Espacio entre columnas de 20px */
-    grid-template-areas: /* Define áreas específicas dentro del grid */
-        "title title" /* Título ocupa ambas columnas */
-        "contenido proyectos"; /* Contenido y proyectos ocupan cada una una columna */
-}
 
 #left { /* Estilo para el elemento con id left */
     padding: 30px; /* Padding de 30px en todos los lados */
@@ -29,25 +212,301 @@ main { /* Estilo para el elemento main */
     grid-area: contenido; /* Asigna este elemento al área 'contenido' */
 }
 
-#right { /* Estilo para el elemento con id right */
-    padding: 30px; /* Padding de 30px en todos los lados */
-    padding-top: 0; /* Sin padding en la parte superior */
-    grid-area: proyectos; /* Asigna este elemento al área 'proyectos' */
-}
-
-h1 { /* Estilo para el título h1 */
+h1 {
+    /* Estilo para el título h1 */
     font-size: 4em; /* Tamaño de fuente grande (4em) */
     font-weight: bold; /* Fuente en negrita */
     color: #000000; /* Color negro */
+    text-align: center; /* Centra el texto horizontalmente */
 }
+
 
 h2 { /* Estilo para subtítulos h2 */
     font-size: 1.5em; /* Tamaño de fuente mediano (1.5em) */
 }
 
-p { /* Estilo para párrafos p */
-    font-size: 18px; /* Tamaño de fuente de 18px */
+p {
+    /* Estilo para párrafos p */
+    font-size: 26px; /* Tamaño de fuente de 26px */
+    font-weight: bold; /* Fuente en negrita */
+    color: #000000; /* Color negro */
+    text-align: center; /* Centra el texto horizontalmente */
+    margin: 1px 0; /* Margen superior e inferior reducido a 1px */
 }
+
+
+/* From Uiverse.io by Nawsome */ 
+.wheel-and-hamster {
+    --dur: 1s;
+    position: relative;
+    width: 12em;
+    height: 12em;
+    font-size: 14px;
+  }
+  
+  .wheel,
+  .hamster,
+  .hamster div,
+  .spoke {
+    position: absolute;
+  }
+  
+  .wheel,
+  .spoke {
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .wheel {
+    background: radial-gradient(100% 100% at center,hsla(0,0%,60%,0) 47.8%,hsl(0,0%,60%) 48%);
+    z-index: 2;
+  }
+  
+  .hamster {
+    animation: hamster var(--dur) ease-in-out infinite;
+    top: 50%;
+    left: calc(50% - 3.5em);
+    height: 3.75em;
+    transform: rotate(4deg) translate(-0.8em,1.85em);
+    transform-origin: 50% 0;
+    z-index: 1;
+  }
+  
+  .hamster__head {
+    animation: hamsterHead var(--dur) ease-in-out infinite;
+    background: hsl(30,90%,55%);
+    border-radius: 70% 30% 0 100% / 40% 25% 25% 60%;
+    box-shadow: 0 -0.25em 0 hsl(30,90%,80%) inset,
+          0.75em -1.55em 0 hsl(30,90%,90%) inset;
+    top: 0;
+    left: -2em;
+    width: 2.75em;
+    height: 2.5em;
+    transform-origin: 100% 50%;
+  }
+  
+  .hamster__ear {
+    animation: hamsterEar var(--dur) ease-in-out infinite;
+    background: hsl(0,90%,85%);
+    border-radius: 50%;
+    box-shadow: -0.25em 0 hsl(30,90%,55%) inset;
+    top: -0.25em;
+    right: -0.25em;
+    width: 0.75em;
+    height: 0.75em;
+    transform-origin: 50% 75%;
+  }
+  
+  .hamster__eye {
+    animation: hamsterEye var(--dur) linear infinite;
+    background-color: hsl(0,0%,0%);
+    border-radius: 50%;
+    top: 0.375em;
+    left: 1.25em;
+    width: 0.5em;
+    height: 0.5em;
+  }
+  
+  .hamster__nose {
+    background: hsl(0,90%,75%);
+    border-radius: 35% 65% 85% 15% / 70% 50% 50% 30%;
+    top: 0.75em;
+    left: 0;
+    width: 0.2em;
+    height: 0.25em;
+  }
+  
+  .hamster__body {
+    animation: hamsterBody var(--dur) ease-in-out infinite;
+    background: hsl(30,90%,90%);
+    border-radius: 50% 30% 50% 30% / 15% 60% 40% 40%;
+    box-shadow: 0.1em 0.75em 0 hsl(30,90%,55%) inset,
+          0.15em -0.5em 0 hsl(30,90%,80%) inset;
+    top: 0.25em;
+    left: 2em;
+    width: 4.5em;
+    height: 3em;
+    transform-origin: 17% 50%;
+    transform-style: preserve-3d;
+  }
+  
+  .hamster__limb--fr,
+  .hamster__limb--fl {
+    clip-path: polygon(0 0,100% 0,70% 80%,60% 100%,0% 100%,40% 80%);
+    top: 2em;
+    left: 0.5em;
+    width: 1em;
+    height: 1.5em;
+    transform-origin: 50% 0;
+  }
+  
+  .hamster__limb--fr {
+    animation: hamsterFRLimb var(--dur) linear infinite;
+    background: linear-gradient(hsl(30,90%,80%) 80%,hsl(0,90%,75%) 80%);
+    transform: rotate(15deg) translateZ(-1px);
+  }
+  
+  .hamster__limb--fl {
+    animation: hamsterFLLimb var(--dur) linear infinite;
+    background: linear-gradient(hsl(30,90%,90%) 80%,hsl(0,90%,85%) 80%);
+    transform: rotate(15deg);
+  }
+  
+  .hamster__limb--br,
+  .hamster__limb--bl {
+    border-radius: 0.75em 0.75em 0 0;
+    clip-path: polygon(0 0,100% 0,100% 30%,70% 90%,70% 100%,30% 100%,40% 90%,0% 30%);
+    top: 1em;
+    left: 2.8em;
+    width: 1.5em;
+    height: 2.5em;
+    transform-origin: 50% 30%;
+  }
+  
+  .hamster__limb--br {
+    animation: hamsterBRLimb var(--dur) linear infinite;
+    background: linear-gradient(hsl(30,90%,80%) 90%,hsl(0,90%,75%) 90%);
+    transform: rotate(-25deg) translateZ(-1px);
+  }
+  
+  .hamster__limb--bl {
+    animation: hamsterBLLimb var(--dur) linear infinite;
+    background: linear-gradient(hsl(30,90%,90%) 90%,hsl(0,90%,85%) 90%);
+    transform: rotate(-25deg);
+  }
+  
+  .hamster__tail {
+    animation: hamsterTail var(--dur) linear infinite;
+    background: hsl(0,90%,85%);
+    border-radius: 0.25em 50% 50% 0.25em;
+    box-shadow: 0 -0.2em 0 hsl(0,90%,75%) inset;
+    top: 1.5em;
+    right: -0.5em;
+    width: 1em;
+    height: 0.5em;
+    transform: rotate(30deg) translateZ(-1px);
+    transform-origin: 0.25em 0.25em;
+  }
+  
+  .spoke {
+    animation: spoke var(--dur) linear infinite;
+    background: radial-gradient(100% 100% at center,hsl(0,0%,60%) 4.8%,hsla(0,0%,60%,0) 5%),
+          linear-gradient(hsla(0,0%,55%,0) 46.9%,hsl(0,0%,65%) 47% 52.9%,hsla(0,0%,65%,0) 53%) 50% 50% / 99% 99% no-repeat;
+  }
+  
+  /* Animations */
+  @keyframes hamster {
+    from, to {
+      transform: rotate(4deg) translate(-0.8em,1.85em);
+    }
+  
+    50% {
+      transform: rotate(0) translate(-0.8em,1.85em);
+    }
+  }
+  
+  @keyframes hamsterHead {
+    from, 25%, 50%, 75%, to {
+      transform: rotate(0);
+    }
+  
+    12.5%, 37.5%, 62.5%, 87.5% {
+      transform: rotate(8deg);
+    }
+  }
+  
+  @keyframes hamsterEye {
+    from, 90%, to {
+      transform: scaleY(1);
+    }
+  
+    95% {
+      transform: scaleY(0);
+    }
+  }
+  
+  @keyframes hamsterEar {
+    from, 25%, 50%, 75%, to {
+      transform: rotate(0);
+    }
+  
+    12.5%, 37.5%, 62.5%, 87.5% {
+      transform: rotate(12deg);
+    }
+  }
+  
+  @keyframes hamsterBody {
+    from, 25%, 50%, 75%, to {
+      transform: rotate(0);
+    }
+  
+    12.5%, 37.5%, 62.5%, 87.5% {
+      transform: rotate(-2deg);
+    }
+  }
+  
+  @keyframes hamsterFRLimb {
+    from, 25%, 50%, 75%, to {
+      transform: rotate(50deg) translateZ(-1px);
+    }
+  
+    12.5%, 37.5%, 62.5%, 87.5% {
+      transform: rotate(-30deg) translateZ(-1px);
+    }
+  }
+  
+  @keyframes hamsterFLLimb {
+    from, 25%, 50%, 75%, to {
+      transform: rotate(-30deg);
+    }
+  
+    12.5%, 37.5%, 62.5%, 87.5% {
+      transform: rotate(50deg);
+    }
+  }
+  
+  @keyframes hamsterBRLimb {
+    from, 25%, 50%, 75%, to {
+      transform: rotate(-60deg) translateZ(-1px);
+    }
+  
+    12.5%, 37.5%, 62.5%, 87.5% {
+      transform: rotate(20deg) translateZ(-1px);
+    }
+  }
+  
+  @keyframes hamsterBLLimb {
+    from, 25%, 50%, 75%, to {
+      transform: rotate(20deg);
+    }
+  
+    12.5%, 37.5%, 62.5%, 87.5% {
+      transform: rotate(-60deg);
+    }
+  }
+  
+  @keyframes hamsterTail {
+    from, 25%, 50%, 75%, to {
+      transform: rotate(30deg) translateZ(-1px);
+    }
+  
+    12.5%, 37.5%, 62.5%, 87.5% {
+      transform: rotate(10deg) translateZ(-1px);
+    }
+  }
+  
+  @keyframes spoke {
+    from {
+      transform: rotate(0);
+    }
+  
+    to {
+      transform: rotate(-1turn);
+    }
+  }
 
 .title { /* Estilo para el elemento con clase title */
     grid-area: title; /* Asigna este elemento al área 'title' */
@@ -61,32 +520,31 @@ p { /* Estilo para párrafos p */
 }
 
 .proyectos { /* Estilo para el contenedor con clase proyectos */
-    display: grid; /* Activa el grid layout */
-    grid-template-columns: 1fr 1fr 1fr; /* Tres columnas iguales */
-    column-gap: 30px; /* Espacio entre columnas de 30px */
-    row-gap: 20px; /* Espacio entre filas de 20px */
-    height: 450px; /* Altura fija de 450px */
-    overflow-y: auto; /* Activa el scroll vertical si es necesario */
+  display: grid; /* Activa el grid layout */
+  grid-template-columns: 1fr 1fr 1fr; /* Tres columnas iguales */
+  column-gap: 30px; /* Espacio entre columnas de 30px */
+  row-gap: 20px; /* Espacio entre filas de 20px */
+  height: 450px; /* Altura fija de 450px */
 }
 
 .proyectos nav { /* Estilo para el elemento nav dentro de .proyectos */
-    display: contents; /* Los hijos se comportan como si estuvieran directamente en el grid */
+  display: contents; /* Los hijos se comportan como si estuvieran directamente en el grid */
 }
 
 .proyectos a { /* Estilo para los enlaces dentro de .proyectos */
-    display: block; /* El enlace ocupa toda la columna */
+  display: block; /* El enlace ocupa toda la columna */
 }
 
 .proyectos nav a img { /* Estilo para las imágenes dentro de los enlaces en .proyectos */
-    width: 100%; /* Imágenes ocupan todo el ancho del contenedor */
-    border-radius: 10px; /* Bordes redondeados */
-    margin-bottom: 1ex; /* Margen inferior de 1ex */
-    border: 3px solid transparent; /* Borde de 3px invisible */
+  width: 100%; /* Imágenes ocupan todo el ancho del contenedor */
+  border-radius: 10px; /* Bordes redondeados */
+  margin-bottom: 1ex; /* Margen inferior de 1ex */
+  border: 3px solid transparent; /* Borde de 3px invisible */
 }
 
 .proyectos nav a:hover img { /* Estilo hover para las imágenes en .proyectos */
-    filter: blur(5px); /* Desenfoque de 5px al pasar el ratón */
-    opacity: 90%; /* Reducción de la opacidad al 90% */
+  filter: blur(5px); /* Desenfoque de 5px al pasar el ratón */
+  opacity: 90%; /* Reducción de la opacidad al 90% */
 }
 
 button { /* Estilo para los botones */
@@ -95,9 +553,10 @@ button { /* Estilo para los botones */
     background-color: rgb(230, 230, 230); /* Color de fondo gris claro */
     font-size: 14px; /* Tamaño de fuente de 14px */
     font-weight: bold; /* Texto en negrita */
-    color: #900C3F; /* Texto naranja */
+    color: #FF6961; /* Texto naranja */
     border: none; /* Sin borde */
     cursor: pointer; /* Cursor de mano al pasar por encima */
+    
 }
 
 button:hover { /* Estilo hover para los botones */
@@ -105,6 +564,22 @@ button:hover { /* Estilo hover para los botones */
     color: black; /* Texto cambia a negro */
     font-weight: bold; /* Mantiene el texto en negrita */
 }
+
+button {
+    font-size: 26px; /* Tamaño de fuente de 26px */
+    font-weight: bold; /* Fuente en negrita */
+    color: #000000; /* Color negro */
+    text-align: center; /* Centra el texto horizontalmente */
+    margin: 1px 0; /* Margen superior e inferior reducido a 1px */
+}
+
+img {
+    display: block; /* Cambia el display para permitir centrado */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    width: 800px; /* Establece el ancho de la imagen a 800 píxeles */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
 
 @media (max-width: 900px) { /* Estilo responsivo para pantallas pequeñas */
     main { /* Ajustes en el elemento main */
